@@ -1,0 +1,52 @@
+<div class="container">
+
+  <!--Filters-->
+  <div class="filters">
+    <h3>Filters</h3>
+    <p>Launch Year</p>
+    <hr>
+    <div class="year">
+      <div class="years">
+        <a *ngFor=" let year of years" (click)="filterValues(year,'launch_year',$event)">{{year}}</a>
+      </div>
+
+      <p>Successful Launch</p>
+      <hr>
+      <div class="launch">
+        <a (click)="filterValues('true','launch_success',$event)">True</a>
+        <a (click)="filterValues('false','launch_success',$event)">False</a>
+      </div>
+      <p>Successful Landing</p>
+      <hr>
+      <div class="landing">
+        <a (click)="filterValues('true','land_success',$event)">True</a>
+        <a (click)="filterValues('false','land_success',$event)">False</a>
+      </div>
+    </div>
+
+  </div>
+
+
+  <!--Missions-->
+
+  <div class="missionContainer">
+    <div class="mission" *ngFor="let miss of missionsList">
+      <div class="card">
+        <img src={{miss.links.mission_patch_small}} alt="Avatar" style="width:100%">
+        <div class="container-inner">
+          <h4><b>{{miss.mission_name}} #{{miss.flight_number}}</b></h4>
+          <p><b>Mission Ids:</b></p>
+          <ul *ngFor="let id of miss.mission_id">
+            <li>{{id}}</li>
+          </ul>
+          <p><b>Launch year:</b>{{miss.launch_year}}</p>
+          <p><b>Successful Lauch:</b>{{miss.launch_success}}</p>
+          <p><b>Successful Landing:</b>{{miss.rocket.first_stage.cores[0].landing_intent}}</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
